@@ -32,10 +32,10 @@ class Grid:
             west  = self.get_cell(row, col - 1)
             east  = self.get_cell(row, col + 1)
 
-            cell.north = north
-            cell.south = south
-            cell.west  = west
-            cell.east  = east 
+            cell.set_north(north)
+            cell.set_south(south)
+            cell.set_west(west)
+            cell.set_east(east)
 
     def get_cell(self,row, column):
         if row not in range(0, self.get_rows()):
