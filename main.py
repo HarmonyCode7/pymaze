@@ -11,4 +11,4 @@ if __name__ == '__main__':
         g = BinaryTree.on(grid)
         print(g)
         img = g.to_png()
-        cv2.imwrite('pillow_maze.png', img)
+        cv2.imwrite('simple-maze.png', img)

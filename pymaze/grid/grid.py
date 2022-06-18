@@ -5,8 +5,8 @@ import numpy
 import cv2
 
 def make_image(width, height, color):
-    image_height = width
-    image_width = height
+    image_height = height
+    image_width = width
     number_of_color_channels = 3
     color = color
     pixel_array = numpy.full((image_height, image_width, number_of_color_channels), color, dtype=numpy.uint8)
