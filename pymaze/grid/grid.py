@@ -1,16 +1,6 @@
 from ..cell.cell import Cell 
 from random import randint 
 from random import choice
-import numpy
-import cv2
-
-def make_image(width, height, color):
-    image_height = width
-    image_width = height
-    number_of_color_channels = 3
-    color = color
-    pixel_array = numpy.full((image_height, image_width, number_of_color_channels), color, dtype=numpy.uint8)
-    return pixel_array
 
 class Grid:
     def __init__(self, rows, columns):
@@ -90,31 +80,3 @@ class Grid:
             output += top + "\n"
             output += bottom + "\n" 
         return output
-
-    def to_png(self, cell_size=10):
-        img_width = cell_size * self.get_columns()
-        img_height = cell_size * self.get_rows();
-
-        background = (0,0,0)
-        wall = (0,255,0)
-
-        img = make_image(img_width + 1, img_height + 1, background)
-        #img = Image.new('RGB', (img_width + 1, img_height + 1), color=background)
-
-        for cell in self.each_cell():
-            x1 = cell.get_column() * cell_size
-            y1 = cell.get_row() * cell_size
-
-            x2 = (cell.get_column() + 1) * cell_size
-            y2 = (cell.get_row() + 1) * cell_size
-
-            if cell.get_north() is None:
-                cv2.line(img,(x1, y1), (x2, y1), wall, 1)
-            if cell.get_west() is None:
-                cv2.line(img,(x1, y1), (x1, y2), wall, 1)
-
-            if not cell.linked(cell.get_east()):
-                cv2.line(img,(x2, y1), (x2, y2), wall, 1)
-            if not cell.linked(cell.get_south()):
-                cv2.line(img,(x1, y2), (x2, y2), wall, 1)
-        return img
