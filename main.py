@@ -1,6 +1,6 @@
 from pymaze import Grid 
 from binarytree import BinaryTree
-
+import cv2
 
 if __name__ == '__main__':
     import sys
@@ -10,3 +10,5 @@ if __name__ == '__main__':
         grid = Grid(rows, cols)
         g = BinaryTree.on(grid)
         print(g)
+        img = g.to_png()
+        cv2.imwrite('pillow_maze.png', img)
